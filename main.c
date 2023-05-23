@@ -53,7 +53,6 @@ int	do_instructions_on_file(int fd)
 int	main(int argc, char **argv)
 {
 	int	fd, err_line;
-	char	*txt_cpy;
 
 	if (argc != 2)
 		return (fprintf(stderr, "USAGE: monty file\n"), EXIT_FAILURE);
