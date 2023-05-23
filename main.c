@@ -1,11 +1,22 @@
 #include "main.h"
 
+/**
+ * do_instructions_on_file - check the code
+ * @fd: file descriptor of the op code file
+ * Return: 0 upon finsh or number of error line.
+ */
 int	do_instructions_on_file(int fd)
 {
 	printf("hellow dear\n");
 	return (0);
 }
 
+/**
+ * main - check the code
+ * @argc: number of argumnets
+ * @argv: string array of arguments
+ * Return: exit status.
+ */
 int	main(int argc, char **argv)
 {
 	int	fd, err_line;
