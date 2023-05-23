@@ -61,7 +61,6 @@ int	main(int argc, char **argv)
 	if (fd == -1)
 		return (fprintf(stderr, "Error: Can't open file %s\n",
 				argv[1]), EXIT_FAILURE);
-	txt_cpy = read_fd(fd);
 	err_line = do_instructions_on_file(fd);
 	close(fd);
 	if (err_line)
