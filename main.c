@@ -2,7 +2,7 @@
 
 /**
  * dlt_stack- check the code
- * @stack: head of double linked list
+ * @head: head of double linked list
  * Return: nothing
  */
 void	dlt_stack(stack_t *head)
