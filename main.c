@@ -1,6 +1,6 @@
 #include "main.h"
 
-#define BUFFER_SIZE 2
+#define BUFFER_SIZE 1024
 /**
  * dlt_stack- check the code
  * @head: head of double linked list
@@ -22,20 +22,19 @@ void	dlt_stack(stack_t *head)
  */
 int	do_instructions_on_file(int fd)
 {
-	stack_t	*stack;
-	char	buff[BUFFER_SIZE];
-	ssize_t	red_bytes = BUFFER_SIZE;
+	stack_t	*stack = NULL;
+	char	*line = NULL;
+	int		line_no = 0;
 
-	reset_string(buff, BUFFER_SIZE);
-	while (red_bytes == BUFFER_SIZE)
+	line = get_next_line(fd);
+	while (line)
 	{
-		red_bytes = read(fd, buff, BUFFER_SIZE);
-		if (red_bytes < 1)
-			break;
-		write(1, buff, red_bytes);
-		reset_string(buff, BUFFER_SIZE);
+		line_no++;
+		printf("got line no %d: %s\n", line_no, line);
+		free(line);
+		line = NULL;
+		line = get_next_line(fd);
 	}
-	stack = NULL;
 	push(&stack, 1);
 	push(&stack, 2);
 	push(&stack, 3);

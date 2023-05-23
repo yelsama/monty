@@ -6,6 +6,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 60
+# endif
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -36,7 +40,13 @@ typedef struct instruction_s
 	void	(*f)(stack_t **stack, unsigned int line_number);
 }	instruction_t;
 
-void	reset_string(char *str, int len);
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlen(const char *s);
+char	*ft_strcpy(char *dest, char *src);
+void	*ft_calloc(size_t count, size_t size);
+
 void	pall(const stack_t *stack);
 void	push(stack_t **stack, unsigned int line_number);
 #endif
