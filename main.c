@@ -26,7 +26,7 @@ int	do_instructions_on_file(int fd)
 	char	buff[BUFFER_SIZE];
 	ssize_t	red_bytes = BUFFER_SIZE;
 
-	reset_string(&buff, BUFFER_SIZE);
+	reset_string(buff, BUFFER_SIZE);
 	while (red_bytes == BUFFER_SIZE)
 	{
 		red_bytes = read(fd, buff, BUFFER_SIZE);

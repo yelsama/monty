@@ -5,13 +5,12 @@
  * @str: file descriptor of the op code file
  * @len: length of the string
  */
-void	reset_string(char **str, int len)
+void	reset_string(char *str, int len)
 {
 	int	i = -1;
-	char *tmp = *str;
 
-	if (!str || !*str)
+	if (!str)
 		return;
-	while (tmp[++i] && i < len)
-		tmp[i] = 0;
+	while (str[++i] && i < len)
+		str[i] = 0;
 }
