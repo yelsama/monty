@@ -8,7 +8,7 @@
 #include <stdint.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 60
+#  define BUFFER_SIZE 2
 # endif
 
 /**
