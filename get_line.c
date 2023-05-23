@@ -63,7 +63,6 @@ char	*get_aline(char *onboard)
  * @onboard: The existing string.
  *
  * Return: Pointer to the updated onboard string,
- *         or NULL if memory allocation fails or an error occurs during reading.
  */
 char	*get_read_new_with_old(int fd, char *onboard)
 {
