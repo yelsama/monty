@@ -5,7 +5,7 @@
  * @stack: head of double linked list
  * Return: nothing
  */
-void	dlt_stack(const stack_t *head)
+void	dlt_stack(stack_t *head)
 {
 	if (!head)
 		return;
