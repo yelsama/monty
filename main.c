@@ -22,11 +22,9 @@ void	dlt_stack(stack_t *head)
 int	do_instructions_on_file(int fd)
 {
 	stack_t	*stack;
-	char	buf[1024];
 
 	(void)fd;
 	stack = NULL;
-	//read line by line get op
 	push(&stack, 1);
 	push(&stack, 2);
 	push(&stack, 3);
@@ -44,7 +42,6 @@ int	do_instructions_on_file(int fd)
 int	main(int argc, char **argv)
 {
 	int	fd, err_line;
-	stack_t	*my_stack;
 
 	if (argc != 2)
 		return (fprintf(stderr, "USAGE: monty file\n"), EXIT_FAILURE);
