@@ -1,5 +1,6 @@
 #include "main.h"
 
+#define BUFFER_SIZE 1024
 /**
  * dlt_stack- check the code
  * @head: head of double linked list
@@ -22,8 +23,18 @@ void	dlt_stack(stack_t *head)
 int	do_instructions_on_file(int fd)
 {
 	stack_t	*stack;
+	char	buff[BUFFER_SIZE];
+	ssize_t	red_bytes = BUFFER_SIZE;
 
-	(void)fd;
+	reset_string(&buff, BUFFER_SIZE);
+	while (red_bytes == BUFFER_SIZE)
+	{
+		red_bytes = read(fd, buff, BUFFER_SIZE);
+		if (red_bytes < 1)
+			break;
+		write(1, buff, red_bytes);
+		reset_string(&buff, BUFFER_SIZE);
+	}
 	stack = NULL;
 	push(&stack, 1);
 	push(&stack, 2);
@@ -42,6 +53,7 @@ int	do_instructions_on_file(int fd)
 int	main(int argc, char **argv)
 {
 	int	fd, err_line;
+	char	*txt_cpy;
 
 	if (argc != 2)
 		return (fprintf(stderr, "USAGE: monty file\n"), EXIT_FAILURE);
@@ -49,6 +61,7 @@ int	main(int argc, char **argv)
 	if (fd == -1)
 		return (fprintf(stderr, "Error: Can't open file %s\n",
 				argv[1]), EXIT_FAILURE);
+	txt_cpy = read_fd(fd);
 	err_line = do_instructions_on_file(fd);
 	close(fd);
 	if (err_line)
