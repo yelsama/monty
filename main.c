@@ -7,6 +7,7 @@
  */
 int	do_instructions_on_file(int fd)
 {
+	(void)fd;
 	printf("hellow dear\n");
 	return (0);
 }
