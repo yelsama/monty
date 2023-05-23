@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 		return (fprintf(stderr, "Error: Can't open file %s\n",
 				argv[1]), EXIT_FAILURE);
 	err_line = do_instructions_on_file(fd);
+	close(fd);
 	if (err_line)
 		return (fprintf(stderr, "L%d: unknown instruction <opcode>\n",
 				err_line), EXIT_FAILURE);
