@@ -1,6 +1,5 @@
 #include "main.h"
 
-#define BUFFER_SIZE 1024
 /**
  * dlt_stack- check the code
  * @head: head of double linked list
