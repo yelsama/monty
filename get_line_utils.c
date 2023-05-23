@@ -66,11 +66,17 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1[0] = '\0';
 	}
 	if (!s1 || !s2)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	len = ft_strlen(s1);
 	result = malloc(sizeof(char) * (len + ft_strlen(s2) + 1));
 	if (!result)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	i = -1;
 	while (++i < len)
 		result[i] = s1[i];
@@ -124,8 +130,11 @@ void	*ft_calloc(size_t count, size_t size)
 	if (size != 0 && count > SIZE_MAX / size)
 		return (0);
 	ptr = malloc(count * size);
-	if (ptr == 0)
-		return (0);
+	if (!ptr)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	while (i < count)
 	{

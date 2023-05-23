@@ -95,21 +95,20 @@ char	*get_read_new_with_old(int fd, char *onboard)
 /**
  * get_next_line - Reads and retrieves the next line from a file descriptor.
  * @fd: The file descriptor.
- *
+ * @onboard: for left of string
  * Return: Pointer to the next line,
  *         or NULL if memory allocation fails or an error occurs.
  */
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, char **onboard)
 {
-	static char	*onboard;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
-	onboard = get_read_new_with_old(fd, onboard);
-	if (!onboard)
+	*onboard = get_read_new_with_old(fd, *onboard);
+	if (!*onboard)
 		return (NULL);
-	line = get_aline(onboard);
-	onboard = get_left(onboard);
+	line = get_aline(*onboard);
+	*onboard = get_left(*onboard);
 	return (line);
 }

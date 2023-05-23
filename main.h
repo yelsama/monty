@@ -41,7 +41,7 @@ typedef struct instruction_s
 	void	(*f)(stack_t **stack, unsigned int line_number);
 }	instruction_t;
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, char **onboard);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *s);

@@ -23,16 +23,17 @@ int	do_instructions_on_file(int fd)
 {
 	stack_t	*stack = NULL;
 	char	*line = NULL;
+	char	*onboard = NULL;
 	int		line_no = 0;
 
-	line = get_next_line(fd);
+	line = get_next_line(fd, &onboard);
 	while (line)
 	{
 		line_no++;
 		printf("got line no %d: %s\n", line_no, line);
 		free(line);
 		line = NULL;
-		line = get_next_line(fd);
+		line = get_next_line(fd, &onboard);
 	}
 	push(&stack, 1);
 	push(&stack, 2);
