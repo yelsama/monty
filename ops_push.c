@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * add_dnodeint - prints list elements
+ * push - prints list elements
  * @stack: holds the pointer to the first element
  * @line_number: number to be stored at the node
  * Return: the new stack for the node
