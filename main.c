@@ -33,7 +33,7 @@ int	do_instructions_on_file(int fd)
 		if (red_bytes < 1)
 			break;
 		write(1, buff, red_bytes);
-		reset_string(&buff, BUFFER_SIZE);
+		reset_string(buff, BUFFER_SIZE);
 	}
 	stack = NULL;
 	push(&stack, 1);
