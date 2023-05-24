@@ -54,5 +54,6 @@ char	*extract_op_code(char *line, char *onboard,
 	}
 	strncpy(op_code, tmp, i);
 	op_code[i] = 0;
+	printf("->>%s<<--\n", op_code);
 	return (op_code);
 }
