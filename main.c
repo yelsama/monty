@@ -24,8 +24,6 @@ void	dlt_stack(stack_t *head)
 void	execute_line(char *line, int line_no, char *onboard, int fd)
 {
 	printf("got line no %d: %s\n", line_no, line);
-	void (onboard);
-	void (fd);
 }
 
 /**
