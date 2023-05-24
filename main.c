@@ -35,7 +35,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 		else
 			f(stack, atoi(tmp));
 	}
-	else if (f == push)
+	else if (f == pall)
 	{
 		if ((!tmp[4] || tmp[4] == ' ' || tmp[4] == '\n'))
 			pall(stack, 0);
