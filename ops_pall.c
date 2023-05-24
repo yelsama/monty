@@ -7,9 +7,9 @@
  */
 void	pall(stack_t **stack, unsigned int number)
 {
-	(void)number;
 	stack_t	*tmp = *stack;
 
+	(void)number;
 	while (tmp)
 	{
 		fprintf(stdout, "%d\n", tmp->n);
