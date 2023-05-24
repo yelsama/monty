@@ -54,6 +54,12 @@ void	execute_line(char *line, int line_no, char *onboard,
 			pop_err(line, line_no, onboard, fd, stack);
 		f(stack, 0);
 	}
+	else if (f == swap)
+	{
+		if (!*stack || !(*stack)->next)
+			swap_err(line, line_no, onboard, fd, stack);
+		f(stack, 0);
+	}
 	else
 		printf("welcome to nowhere\n");
 }

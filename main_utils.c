@@ -47,7 +47,8 @@ void	(*get_op_code(char *s))(stack_t **, unsigned int)
 	instruction_t	codes[] = {{"push", push},
 	{"pall", pall},
 	{"pint", pint},
-	{"pop", pop}
+	{"pop", pop},
+	{"swap", swap}
 	};
 
 	while (codes[++i].opcode)
