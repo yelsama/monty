@@ -29,7 +29,7 @@ void	(*get_op_code(char *s))(stack_t **, unsigned int)
  * @stack: main stack;
  * Return: operation code as string
  */
-char	*extract_op_code(char *line, int line_no, char *onboard,
+char	*extract_op_code(char *line, char *onboard,
 		int fd, stack_t **stack)
 {
 	char	*tmp;

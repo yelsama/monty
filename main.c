@@ -14,14 +14,13 @@ void	execute_line(char *line, int line_no, char *onboard,
 	char	*tmp;
 	char	*op_code = NULL;
 	void	(*f)(stack_t**, unsigned int);
-	int		i = 0;
 
 	tmp = line;
 	while (*tmp == ' ')
 		tmp++;
 	if (*tmp == '\n')
 		return;
-	op_code = extract_op_code(line, line_no, onboard, fd, stack);
+	op_code = extract_op_code(line, onboard, fd, stack);
 	f = get_op_code(op_code);
 	free(op_code);
 	if (!f)

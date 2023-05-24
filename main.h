@@ -50,7 +50,7 @@ char	*ft_strcpy(char *dest, char *src);
 void	*ft_calloc(size_t count, size_t size);
 
 void	dlt_stack(stack_t *head);
-char	*extract_op_code(char *line, int line_no, char *onboard,
+char	*extract_op_code(char *line, char *onboard,
 			int fd, stack_t **stack);
 void	push_err(char *line, int line_no, char *onboard,
 			int fd, stack_t **stack);
