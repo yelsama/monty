@@ -5,7 +5,7 @@
  * @stack: head of double linked list
  * Return: number of nodes
  */
-void	pall(const stack_t *stack, unsigned int number)
+void	pall(stack_t *stack, unsigned int number)
 {
 	(void)number;
 	while (stack)
