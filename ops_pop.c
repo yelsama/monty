@@ -17,7 +17,8 @@ void	pop(stack_t **stack, unsigned int number)
 		return;
 	new_head = tmp->next;
 	free(tmp);
-	tmp = NULL;
+	if (new_head)
+		new_head->prev = NULL;
 	*stack = new_head;
 }
 
