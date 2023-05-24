@@ -42,6 +42,12 @@ void	execute_line(char *line, int line_no, char *onboard,
 		else
 			unknown_err(line, line_no, onboard, fd, stack);
 	}
+	else if (f == pint)
+	{
+		if (!*stack)
+			pint_err(line, line_no, onboard, fd, stack);
+		f(stack, 0);
+	}
 	else
 		printf("welcome to nowhere\n");
 }
