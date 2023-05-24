@@ -27,17 +27,23 @@ void	unknown_err(char *line, int line_no, char *onboard,
 {
 	char	*tmp;
 	int		i = 0;
+	char	op_code = NULL;
 
 	tmp = line;
 	while (*tmp == ' ')
 		tmp++;
 	while (tmp[i] && tmp[i] != ' ')
 		i++;
-	char	op_code[i + 1];
-
+	op_code = malloc(i + 1);
+	if (!op_code)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	strncpy(op_code, tmp, i);
 	op_code[i] = 0;
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_no, op_code);
+	free(op_code);
 	free(line);
 	if (onboard)
 		free(onboard);
