@@ -13,7 +13,7 @@ void	pop(stack_t **stack, unsigned int number)
 
 	(void)number;
 	tmp = *stack;
-	if (!tmp)
+	if (tmp)
 		return;
 	new_head = tmp->next;
 	free(tmp);
