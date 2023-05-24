@@ -5,12 +5,14 @@
  * @stack: head of double linked list
  * Return: number of nodes
  */
-void	pall(stack_t *stack, unsigned int number)
+void	pall(stack_t **stack, unsigned int number)
 {
 	(void)number;
-	while (stack)
+	stack_t	*tmp = *stack;
+
+	while (tmp)
 	{
-		fprintf(stdout, "%d\n", stack->n);
-		stack = stack->next;
+		fprintf(stdout, "%d\n", tmp->n);
+		tmp = tmp->next;
 	}
 }
