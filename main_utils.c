@@ -3,7 +3,6 @@
 /**
  * extract_op_code - check the code
  * @line: current line to execute
- * @line_no: line order in the file
  * @onboard: left part of reading
  * @fd: file descriptor of open file
  * @stack: main stack;
