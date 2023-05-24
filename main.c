@@ -86,7 +86,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 	char	*tmp;
 
 	tmp = line;
-	printf("got line no %d: %s\n", line_no, line);
 	while (*tmp == ' ')
 		tmp++;
 	if (strncmp("push ", tmp, 5) == 0)
@@ -99,8 +98,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 	}
 	else if (strncmp("pall", tmp, 4) == 0)
 	{
-		printf("this is tmp 4: %c\n", tmp[4]);
-		if ((tmp[5] == 0 || tmp[5] == ' '))
+		if ((!tmp[4] || tmp[4] == ' ' || tmp[4] == '\n'))
 			pall(*stack);
 		else
 			unknown_err(line, line_no, onboard, fd, stack);
