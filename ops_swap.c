@@ -8,25 +8,16 @@
  */
 void	swap(stack_t **stack, unsigned int number)
 {
-	stack_t	*new_first;
-	stack_t	*new_second;
-	stack_t	*rest;
 	stack_t	*tmp;
+	int		sp;
 
 	(void)number;
 	tmp = *stack;
-	if (!tmp || !tmp->next)
+	if (!tmp || tmp->next)
 		return;
-	new_first = tmp->next;
-	new_second = tmp;
-	rest = tmp->next->next;
-	if (rest)
-		rest->prev = new_second;
-	new_second->prev = new_first;
-	new_first->prev = NULL;
-	new_first->next = new_second;
-	new_second->next = rest;
-	*stack = new_first;
+	sp = tmp->n;
+	tmp->n = tmp->next->n;
+	tmp->next->n = sp;
 }
 
 /**
