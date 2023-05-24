@@ -9,7 +9,7 @@ void	pall(const stack_t *stack)
 {
 	while (stack)
 	{
-		printfp(stdout, "%d\n", stack->n);
+		fprintf(stdout, "%d\n", stack->n);
 		stack = stack->next;
 	}
 }
