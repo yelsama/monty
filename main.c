@@ -15,6 +15,20 @@ void	dlt_stack(stack_t *head)
 }
 
 /**
+ * execute_line - check the code
+ * @line: current line to execute
+ * @line_no: line order in the file
+ * @onboard: left part of reading
+ * @fd: file descriptor of open file
+ */
+void	execute_line(char *line, int line_no, char *onboard, int fd)
+{
+	printf("got line no %d: %s\n", line_no, line);
+	void (onboard);
+	void (fd);
+}
+
+/**
  * do_instructions_on_file - check the code
  * @fd: file descriptor of the op code file
  * Return: 0 upon finsh or number of error line.
@@ -29,8 +43,7 @@ int	do_instructions_on_file(int fd)
 	line = get_next_line(fd, &onboard);
 	while (line)
 	{
-		line_no++;
-		printf("got line no %d: %s\n", line_no, line);
+		execute_line(line, ++line_no, onboard, fd);
 		free(line);
 		line = NULL;
 		line = get_next_line(fd, &onboard);
@@ -54,15 +67,15 @@ int	main(int argc, char **argv)
 	int	fd, err_line;
 
 	if (argc != 2)
-		return (fprintf(stderr, "USAGE: monty file\n"), EXIT_FAILURE);
+		return (fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE), 1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		return (fprintf(stderr, "Error: Can't open file %s\n",
-				argv[1]), EXIT_FAILURE);
+				argv[1]), exit(EXIT_FAILURE), 1);
 	err_line = do_instructions_on_file(fd);
 	close(fd);
 	if (err_line)
 		return (fprintf(stderr, "L%d: unknown instruction <opcode>\n",
-				err_line), EXIT_FAILURE);
-	return (err_line);
+				err_line), exit(EXIT_FAILURE), 1);
+	return (0);
 }
