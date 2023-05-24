@@ -34,6 +34,7 @@ void	unknown_err(char *line, int line_no, char *onboard,
 	while (tmp[i] && tmp[i] != ' ')
 		i++;
 	char	op_code[i];
+
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_no, op_code);
 	if (op_code)
 		free(op_code);
