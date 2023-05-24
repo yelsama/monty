@@ -27,7 +27,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 		unknown_err(line, line_no, onboard, fd, stack);
 	if (f == push)
 	{
-		printf("got into push\n");
 		tmp += 5;
 		if (*tmp == '+' || *tmp == '-')
 			tmp++;
@@ -44,7 +43,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 			unknown_err(line, line_no, onboard, fd, stack);
 	}
 	else
-		pall(stack, 0);
+		printf("welcome to nowhere\n");
 }
 
 /**
