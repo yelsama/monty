@@ -1,26 +1,6 @@
 #include "main.h"
 
 /**
- * get_op_code - check the code
- * @s: operation as string
- * Return: pointer to the funcion if suitalbe
- */
-void	(*get_op_code(char *s))(stack_t **, unsigned int)
-{
-	int	i = -1;
-	instruction_t	codes[] = {{"push", push},
-	{"pall", pall}
-	};
-
-	while (codes[++i].opcode)
-	{
-		if (strcmp(s, codes[i].opcode) == 0)
-			return (codes[i].f);
-	}
-	return (NULL);
-}
-
-/**
  * extract_op_code - check the code
  * @line: current line to execute
  * @line_no: line order in the file
@@ -56,3 +36,24 @@ char	*extract_op_code(char *line, char *onboard,
 	op_code[i] = 0;
 	return (op_code);
 }
+
+/**
+ * get_op_code - check the code
+ * @s: operation as string
+ * Return: pointer to the funcion if suitalbe
+ */
+void	(*get_op_code(char *s))(stack_t **, unsigned int)
+{
+	int	i = -1;
+	instruction_t	codes[] = {{"push", push},
+	{"pall", pall}
+	};
+
+	while (codes[++i].opcode)
+	{
+		if (strcmp(s, codes[i].opcode) == 0)
+			return (codes[i].f);
+	}
+	return (NULL);
+}
+
