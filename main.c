@@ -110,6 +110,5 @@ int	main(int argc, char **argv)
 	}
 	do_instructions_on_file(fd);
 	close(fd);
-	exit(0);
 	return (0);
 }
