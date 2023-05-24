@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * get_left - Retrieves the remaining portion

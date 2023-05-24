@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * dlt_stack- check the code
