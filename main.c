@@ -33,11 +33,11 @@ void	unknown_err(char *line, int line_no, char *onboard,
 		tmp++;
 	while (tmp[i] && tmp[i] != ' ')
 		i++;
-	char	op_code[i];
+	char	op_code[i + 1];
 
+	strncpy(op_code, tmp, i);
+	op_code[i] = 0;
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_no, op_code);
-	if (op_code)
-		free(op_code);
 	free(line);
 	if (onboard)
 		free(onboard);
