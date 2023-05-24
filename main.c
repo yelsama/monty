@@ -72,12 +72,16 @@ int	do_instructions_on_file(int fd)
 	stack_t	*stack = NULL;
 	char	*line = NULL;
 	char	*onboard = NULL;
+	char	*tmp;
 	int		line_no = 0;
 
 	line = get_next_line(fd, &onboard);
 	while (line)
 	{
-		if (line[0] != '\n')
+		tmp = line;
+		while (*tmp == ' ')
+			tmp++;
+		if (*tmp != '\n' || *tmp != '\0')
 			execute_line(line, ++line_no, onboard, fd, &stack);
 		free(line);
 		line = NULL;
