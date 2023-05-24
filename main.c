@@ -23,11 +23,21 @@ void	dlt_stack(stack_t *head)
  */
 void	execute_line(char *line, int line_no, char *onboard, int fd)
 {
+	char	*tmp;
+
+	tmp = line;
 	printf("got line no %d: %s\n", line_no, line);
 	if (1 == 3)
 	{
 		free(onboard);
 		close(fd);
+	}
+	while (*tmp == ' ')
+		tmp++;
+	if (strncmp("push ", tmp, 5) == 0)
+	{
+		tmp += 5;
+		printf("this is found %c\n", *tmp);
 	}
 }
 
