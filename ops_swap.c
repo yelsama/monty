@@ -13,7 +13,7 @@ void	swap(stack_t **stack, unsigned int number)
 
 	(void)number;
 	tmp = *stack;
-	if (!tmp || tmp->next)
+	if (!tmp || !tmp->next)
 		return;
 	sp = tmp->n;
 	tmp->n = tmp->next->n;
