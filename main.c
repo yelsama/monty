@@ -22,13 +22,13 @@ void	dlt_stack(stack_t *head)
  * @fd: file descriptor of open file
  * @stack: main stack;
  */
-void	clear_exit(char *line, int line_no, char *onboard, int fd, char **stack)
+void	clear_exit(char *line, int line_no, char *onboard, int fd, stack_t **stack)
 {
 	free(line);
 	if (onboard)
 		free(onboard);
 	close(fd);
-	dlt_stack(stack[0]);
+	dlt_stack(*stack);
 	fprintf(stderr, "L%d: usage: push integer\n", line_no);
 	exit(EXIT_FAILURE);
 }
@@ -41,7 +41,7 @@ void	clear_exit(char *line, int line_no, char *onboard, int fd, char **stack)
  * @fd: file descriptor of open file
  * @stack: main stack;
  */
-void	execute_line(char *line, int line_no, char *onboard, int fd, char **stack)
+void	execute_line(char *line, int line_no, char *onboard, int fd, stack_t **stack)
 {
 	char	*tmp;
 
@@ -52,7 +52,7 @@ void	execute_line(char *line, int line_no, char *onboard, int fd, char **stack)
 	if (strncmp("push ", tmp, 5) == 0)
 	{
 		tmp += 5;
-		if (!*tmp || *tmp < '0' || tmp > '9')
+		if (!*tmp || *tmp < '0' || *tmp > '9')
 			clear_exit(line, line_no, onboard, fd, stack);
 		else
 			push(stack, atoi(tmp));
