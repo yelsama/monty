@@ -28,8 +28,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 	if (f == push)
 	{
 		tmp += 5;
-		if (*tmp == '+' || *tmp == '-')
-			tmp++;
 		if (!*tmp || *tmp < '0' || *tmp > '9')
 			push_err(line, line_no, onboard, fd, stack);
 		else
