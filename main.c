@@ -12,27 +12,39 @@ void	execute_line(char *line, int line_no, char *onboard,
 	int fd, stack_t **stack)
 {
 	char	*tmp;
+	char	*op_code = NULL;
+	void	(*f)(stack_t**, unsigned int);
+	int		i = 0;
 
 	tmp = line;
 	while (*tmp == ' ')
 		tmp++;
-	if (strncmp("push ", tmp, 5) == 0)
+	if (*tmp == '\n')
+		return;
+	op_code = extract_op_code(line, line_no, onboard, fd, stack);
+	f = get_op_code(op_code);
+	free(op_code);
+	if (!f)
+		unknown_err(line, line_no, onboard, fd, stack);
+	if (f == push)
 	{
 		tmp += 5;
+		if (*tmp == '+' || *tmp == '-')
+			tmp++;
 		if (!*tmp || *tmp < '0' || *tmp > '9')
 			push_err(line, line_no, onboard, fd, stack);
 		else
-			push(stack, atoi(tmp));
+			f(stack, atoi(tmp));
 	}
-	else if (strncmp("pall", tmp, 4) == 0)
+	else if (f == push)
 	{
 		if ((!tmp[4] || tmp[4] == ' ' || tmp[4] == '\n'))
-			pall(*stack);
+			pall(*stack, 0);
 		else
 			unknown_err(line, line_no, onboard, fd, stack);
 	}
 	else
-		unknown_err(line, line_no, onboard, fd, stack);
+		printf("welcome to no where\n");
 }
 
 /**
@@ -50,7 +62,8 @@ int	do_instructions_on_file(int fd)
 	line = get_next_line(fd, &onboard);
 	while (line)
 	{
-		execute_line(line, ++line_no, onboard, fd, &stack);
+		if (line[0] != '\n')
+			execute_line(line, ++line_no, onboard, fd, &stack);
 		free(line);
 		line = NULL;
 		line = get_next_line(fd, &onboard);

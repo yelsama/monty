@@ -3,10 +3,10 @@
 /**
  * push - prints list elements
  * @stack: holds the pointer to the first element
- * @line_number: number to be stored at the node
+ * @number: number to be stored at the node
  * Return: the new stack for the node
  */
-void	push(stack_t **stack, unsigned int line_number)
+void	push(stack_t **stack, unsigned int number)
 {
 	stack_t	*new_stack;
 
@@ -16,7 +16,7 @@ void	push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new_stack->n = line_number;
+	new_stack->n = number;
 	new_stack->next = *stack;
 	new_stack->prev = NULL;
 	if (*stack)
