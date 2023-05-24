@@ -39,7 +39,7 @@ char	*extract_op_code(char *line, char *onboard,
 	tmp = line;
 	while (*tmp == ' ')
 		tmp++;
-	while (tmp[i] && (tmp[i] != ' ' || tmp[i] != '\n'))
+	while (tmp[i] && tmp[i] != ' ' && tmp[i] != '\n')
 		i++;
 	op_code = malloc(i + 1);
 	if (!op_code)
