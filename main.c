@@ -99,6 +99,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 	}
 	else if (strncmp("pall", tmp, 4) == 0)
 	{
+		printf("this is tmp 0: %c", tmp[0]);
 		if ((tmp[5] == 0 || tmp[5] == ' '))
 			pall(*stack);
 		else
