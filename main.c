@@ -26,7 +26,6 @@ void	unknown_err(char *line, int line_no, char *onboard,
 	int fd, stack_t **stack)
 {
 	char	*tmp;
-	char	*op_code = NULL;
 	int		i = 0;
 
 	tmp = line;
@@ -34,8 +33,7 @@ void	unknown_err(char *line, int line_no, char *onboard,
 		tmp++;
 	while (tmp[i] && tmp[i] != ' ')
 		i++;
-	if (i)
-		op_code = strndup(tmp, i);
+	char	op_code[i];
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_no, op_code);
 	if (op_code)
 		free(op_code);
