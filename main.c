@@ -103,6 +103,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 			pall(*stack);
 		else
 			unknown_err(line, line_no, onboard, fd, stack);
+		printf("scout\n");
 	}
 	else
 		unknown_err(line, line_no, onboard, fd, stack);
