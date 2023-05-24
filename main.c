@@ -15,14 +15,50 @@ void	dlt_stack(stack_t *head)
 }
 
 /**
- * clear_exit- check the code
+ * unknown_err- check the code
  * @line: current line to execute
  * @line_no: line order in the file
  * @onboard: left part of reading
  * @fd: file descriptor of open file
  * @stack: main stack;
  */
-void	clear_exit(char *line, int line_no, char *onboard, int fd, stack_t **stack)
+void	unknown_err(char *line, int line_no, char *onboard,
+	int fd, stack_t **stack)
+{
+	char	*tmp;
+	char	op_code;
+	int		i = 0;
+
+	tmp = line;
+	while (*tmp == ' ')
+		tmp++;
+	while (tmp[i] && tmp[i] != ' ')
+		i++;
+	if (i)
+		tmp = strndup(tmp, i);
+	else
+		tmp = NULL;
+	fprintf(stderr, "L%d: unknown instruction %s", line_no, tmp);
+	if (tmp && i)
+		free(tmp);
+	free(line);
+	if (onboard)
+		free(onboard);
+	close(fd);
+	dlt_stack(*stack);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * push_err- check the code
+ * @line: current line to execute
+ * @line_no: line order in the file
+ * @onboard: left part of reading
+ * @fd: file descriptor of open file
+ * @stack: main stack;
+ */
+void	push_err(char *line, int line_no, char *onboard,
+	int fd, stack_t **stack)
 {
 	free(line);
 	if (onboard)
@@ -41,7 +77,8 @@ void	clear_exit(char *line, int line_no, char *onboard, int fd, stack_t **stack)
  * @fd: file descriptor of open file
  * @stack: main stack;
  */
-void	execute_line(char *line, int line_no, char *onboard, int fd, stack_t **stack)
+void	execute_line(char *line, int line_no, char *onboard,
+	int fd, stack_t **stack)
 {
 	char	*tmp;
 
@@ -53,10 +90,19 @@ void	execute_line(char *line, int line_no, char *onboard, int fd, stack_t **stac
 	{
 		tmp += 5;
 		if (!*tmp || *tmp < '0' || *tmp > '9')
-			clear_exit(line, line_no, onboard, fd, stack);
+			push_err(line, line_no, onboard, fd, stack);
 		else
 			push(stack, atoi(tmp));
 	}
+	else if (strncmp("pall", tmp, 4) == 0)
+	{
+		if ((!tmp[4] || tmp[4] == ' '))
+			pall(stack);
+		else
+			unknown_err(line, line_no, onboard, fd, stack);
+	}
+	else
+		unknown_err(line, line_no, onboard, fd, stack);
 }
 
 /**
@@ -79,7 +125,6 @@ int	do_instructions_on_file(int fd)
 		line = NULL;
 		line = get_next_line(fd, &onboard);
 	}
-	pall(stack);
 	dlt_stack(stack);
 	return (0);
 }
@@ -92,7 +137,7 @@ int	do_instructions_on_file(int fd)
  */
 int	main(int argc, char **argv)
 {
-	int	fd, err_line;
+	int	fd;
 
 	if (argc != 2)
 		return (fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE), 1);
@@ -100,10 +145,7 @@ int	main(int argc, char **argv)
 	if (fd == -1)
 		return (fprintf(stderr, "Error: Can't open file %s\n",
 				argv[1]), exit(EXIT_FAILURE), 1);
-	err_line = do_instructions_on_file(fd);
+	do_instructions_on_file(fd);
 	close(fd);
-	if (err_line)
-		return (fprintf(stderr, "L%d: unknown instruction <opcode>\n",
-				err_line), exit(EXIT_FAILURE), 1);
 	return (0);
 }
