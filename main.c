@@ -99,7 +99,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 	}
 	else if (strncmp("pall", tmp, 4) == 0)
 	{
-		if ((tmp[4] == 0 || tmp[4] == ' '))
+		if ((tmp[5] == 0 || tmp[5] == ' '))
 			pall(*stack);
 		else
 			unknown_err(line, line_no, onboard, fd, stack);
