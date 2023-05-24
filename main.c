@@ -15,29 +15,43 @@ void	dlt_stack(stack_t *head)
 }
 
 /**
+ * clear_exit- check the code
+ * @line: current line to execute
+ * @line_no: line order in the file
+ * @onboard: left part of reading
+ * @fd: file descriptor of open file
+ * @stack: main stack;
+ */
+void	clear_exit(char *line, int line_no, char *onboard, int fd, char *stack)
+{
+	free(line);
+	if (onboard)
+		free(onboard);
+	close(fd);
+	fprintf(stderr, "L%d: usage: push integer\n", line_no);
+}
+
+/**
  * execute_line - check the code
  * @line: current line to execute
  * @line_no: line order in the file
  * @onboard: left part of reading
  * @fd: file descriptor of open file
+ * @stack: main stack;
  */
-void	execute_line(char *line, int line_no, char *onboard, int fd)
+void	execute_line(char *line, int line_no, char *onboard, int fd, char *stack)
 {
 	char	*tmp;
 
 	tmp = line;
 	printf("got line no %d: %s\n", line_no, line);
-	if (1 == 3)
-	{
-		free(onboard);
-		close(fd);
-	}
 	while (*tmp == ' ')
 		tmp++;
 	if (strncmp("push ", tmp, 5) == 0)
 	{
 		tmp += 5;
-		printf("this is found %c\n", *tmp);
+		if (!*tmp || *tmp < '0' || tmp > '9')
+			clear_exit(line, line_no, onboard, fd, stack);
 	}
 }
 
@@ -56,14 +70,11 @@ int	do_instructions_on_file(int fd)
 	line = get_next_line(fd, &onboard);
 	while (line)
 	{
-		execute_line(line, ++line_no, onboard, fd);
+		execute_line(line, ++line_no, onboard, fd, stack);
 		free(line);
 		line = NULL;
 		line = get_next_line(fd, &onboard);
 	}
-	push(&stack, 1);
-	push(&stack, 2);
-	push(&stack, 3);
 	pall(stack);
 	dlt_stack(stack);
 	return (0);
