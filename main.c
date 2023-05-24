@@ -27,7 +27,7 @@ void	unknown_err(char *line, int line_no, char *onboard,
 {
 	char	*tmp;
 	int		i = 0;
-	char	op_code = NULL;
+	char	*op_code = NULL;
 
 	tmp = line;
 	while (*tmp == ' ')
