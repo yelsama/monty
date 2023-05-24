@@ -28,7 +28,7 @@ void	clear_exit(char *line, int line_no, char *onboard, int fd, char **stack)
 	if (onboard)
 		free(onboard);
 	close(fd);
-	dlt_stack(stack);
+	dlt_stack(stack[0]);
 	fprintf(stderr, "L%d: usage: push integer\n", line_no);
 	exit(EXIT_FAILURE);
 }
