@@ -26,7 +26,7 @@ void	mdiv(stack_t **stack, unsigned int number)
  * @fd: file descriptor of open file
  * @stack: main stack;
  */
-void	sub_err(char *line, int line_no, char *onboard,
+void	div_err(char *line, int line_no, char *onboard,
 	int fd, stack_t **stack)
 {
 	free(line);
