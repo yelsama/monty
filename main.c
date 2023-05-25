@@ -22,6 +22,9 @@ void	the_rest(void	(*f)(stack_t**, unsigned int), char *line,
 			if ((*stack)->n == 0)
 				div_err2(line, line_no, onboard, fd, stack);
 		}
+		if (f == mul)
+			if (!*stack || !(*stack)->next)
+				mul_err(line, line_no, onboard, fd, stack);
 }
 
 /**
