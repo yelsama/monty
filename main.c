@@ -12,9 +12,9 @@
 void	the_rest(void	(*f)(stack_t**, unsigned int), char *line,
 	int line_no, char *onboard, int fd, stack_t **stack)
 {
-		if (f == add)
+		if (f == sub)
 			if (!*stack || !(*stack)->next)
-				add_err(line, line_no, onboard, fd, stack);
+				sub_err(line, line_no, onboard, fd, stack);
 }
 
 /**
