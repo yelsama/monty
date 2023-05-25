@@ -65,7 +65,7 @@ int	do_instructions_on_file(int fd)
 		tmp = line;
 		while (*tmp == ' ')
 			tmp++;
-		if (*tmp != '\n' || *tmp != '\0')
+		if (*tmp != '\n' && *tmp != '\0')
 			execute_line(line, ++line_no, onboard, fd, &stack);
 		free(line);
 		line = NULL;
