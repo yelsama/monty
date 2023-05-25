@@ -1,6 +1,23 @@
 #include "monty.h"
 
 /**
+ * the_rest - check the code
+ * @f: pointer to funcion
+ * @line: current line to execute
+ * @line_no: line order in the file
+ * @onboard: left part of reading
+ * @fd: file descriptor of open file
+ * @stack: main stack;
+ */
+void	the_rest(void	(*f)(stack_t**, unsigned int), char *line,
+	int line_no, char *onboard, int fd, stack_t **stack)
+{
+		if (f == add)
+			if (!*stack || !(*stack)->next)
+				add_err(line, line_no, onboard, fd, stack);
+}
+
+/**
  * execute_line - check the code
  * @line: current line to execute
  * @line_no: line order in the file
@@ -35,18 +52,20 @@ void	execute_line(char *line, int line_no, char *onboard,
 		if (!isdigit(*tmp))
 			push_err(line, line_no, onboard, fd, stack);
 	}
-	if (f == pint)
+	else if (f == pint)
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
-	if (f == pop)
+	else if (f == pop)
 		if (!*stack)
 			pop_err(line, line_no, onboard, fd, stack);
-	if (f == swap)
+	else if (f == swap)
 		if (!*stack || !(*stack)->next)
 			swap_err(line, line_no, onboard, fd, stack);
-	if (f == add)
+	else if (f == add)
 		if (!*stack || !(*stack)->next)
 			add_err(line, line_no, onboard, fd, stack);
+	else
+		the_rest(f, line, line_no, onboard, fd, stack);
 	f(stack, n);
 }
 
