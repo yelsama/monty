@@ -16,7 +16,7 @@ void	pchar(stack_t **stack, unsigned int number)
 	if (!tmp)
 		return;
 	c = tmp->n;
-	fprintf(stdout, "%c\n", c);
+	fprintf(STDOUT_FILENO, "%c\n", c);
 }
 
 /**

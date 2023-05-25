@@ -94,5 +94,6 @@ void	mdiv(stack_t **stack, unsigned int number);
 void	mul(stack_t **stack, unsigned int number);
 void	mod(stack_t **stack, unsigned int number);
 void	pchar(stack_t **stack, unsigned int number);
+void	pstr(stack_t **stack, unsigned int number);
 void	(*get_op_code(char *s))(stack_t **, unsigned int);
 #endif
