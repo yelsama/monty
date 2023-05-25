@@ -12,6 +12,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 	int fd, stack_t **stack)
 {
 	char	*tmp;
+	int		n = 0;
 	char	*op_code = NULL;
 	void	(*f)(stack_t**, unsigned int);
 
@@ -30,8 +31,10 @@ void	execute_line(char *line, int line_no, char *onboard,
 		tmp += 4;
 		while (*tmp == ' ')
 			tmp++;
-		if (!isdigit(*tmp))
-			push_err(line, line_no, onboard, fd, stack);
+		n = atoi(tmp);
+		while (*tmp != ' ' || *tmp != '\n' || *tmp != 0)
+			if (!isdigit(*tmp))
+				push_err(line, line_no, onboard, fd, stack);
 	}
 	if (f == pint)
 		if (!*stack)
@@ -42,7 +45,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 	if (f == swap)
 		if (!*stack || !(*stack)->next)
 			swap_err(line, line_no, onboard, fd, stack);
-	f(stack, atoi(tmp));
+	f(stack, n);
 }
 
 /**
