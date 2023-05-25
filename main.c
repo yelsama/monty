@@ -84,15 +84,8 @@ int	do_instructions_on_file(int fd)
 int	main(int argc, char **argv)
 {
 	int		fd;
-	char	*extent;
 
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-	extent = strrchr(argv[1], '.');
-	if (!extent || extent[1] != 'm' || extent[2] != '\0')
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
