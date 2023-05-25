@@ -49,7 +49,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 		while (*tmp == ' ')
 			tmp++;
 		if (tmp[0] != 0 && tmp[0] != '\n')
-			pint_err(line, line_no, onboard, fd, stack);
+			unknown_err(line, line_no, onboard, fd, stack);
 	}
 	if (f == pop)
 		if (!*stack)
