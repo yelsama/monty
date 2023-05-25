@@ -33,7 +33,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 		while (*tmp == ' ')
 			tmp++;
 		if (*tmp == '+')
-			*tmp++;
+			tmp++;
 		if (*tmp == '-' && (!tmp[1] || tmp[1] < '0' || tmp[1] > '9'))
 			push_err(line, line_no, onboard, fd, stack);
 		else if (!*tmp || *tmp < '0' || *tmp > '9')
