@@ -34,8 +34,9 @@ void	execute_line(char *line, int line_no, char *onboard,
 			push_err(line, line_no, onboard, fd, stack);
 		while (*tmp &&  *tmp != '\n')
 		{
-			if (*tmp > '9' || *tmp < '0')
-				push_err(line, line_no, onboard, fd, stack);
+			if (*tmp > '9' || *tmp < '0' )
+				if (*tmp != ' ')
+					push_err(line, line_no, onboard, fd, stack);
 			tmp++;
 		}
 	}
