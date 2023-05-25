@@ -49,7 +49,8 @@ void	(*get_op_code(char *s))(stack_t **, unsigned int)
 	{"pint", pint},
 	{"pop", pop},
 	{"swap", swap},
-	{"add", add}
+	{"add", add},
+	{"nop", nop}
 	};
 
 	while (codes[++i].opcode)
@@ -58,5 +59,18 @@ void	(*get_op_code(char *s))(stack_t **, unsigned int)
 			return (codes[i].f);
 	}
 	return (NULL);
+}
+
+/**
+ * nop - prints list elements
+ * @stack: holds the pointer to the first element
+ * @number: number to be stored at the node
+ * Return: the new stack for the node
+ */
+void	nop(stack_t **stack, unsigned int number)
+{
+	(void)stack;
+	(void)number;
+	return;
 }
 

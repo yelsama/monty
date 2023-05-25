@@ -72,5 +72,6 @@ void	pint(stack_t **stack, unsigned int number);
 void	pop(stack_t **stack, unsigned int number);
 void	swap(stack_t **stack, unsigned int number);
 void	add(stack_t **stack, unsigned int number);
+void	nop(stack_t **stack, unsigned int number);
 void	(*get_op_code(char *s))(stack_t **, unsigned int);
 #endif
