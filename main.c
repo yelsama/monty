@@ -53,7 +53,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 	tmp = line;
 	while (*tmp == ' ')
 		tmp++;
-	if (*tmp == '\n')
+	if (*tmp == '\n' || *tmp == '#')
 		return;
 	op_code = extract_op_code(line, onboard, fd, stack);
 	f = get_op_code(op_code);
