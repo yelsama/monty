@@ -52,20 +52,19 @@ void	execute_line(char *line, int line_no, char *onboard,
 		if (!isdigit(*tmp))
 			push_err(line, line_no, onboard, fd, stack);
 	}
-	else if (f == pint)
+	if (f == pint)
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
-	else if (f == pop)
+	if (f == pop)
 		if (!*stack)
 			pop_err(line, line_no, onboard, fd, stack);
-	else if (f == swap)
+	if (f == swap)
 		if (!*stack || !(*stack)->next)
 			swap_err(line, line_no, onboard, fd, stack);
-	else if (f == add)
+	if (f == add)
 		if (!*stack || !(*stack)->next)
 			add_err(line, line_no, onboard, fd, stack);
-	else
-		the_rest(f, line, line_no, onboard, fd, stack);
+	the_rest(f, line, line_no, onboard, fd, stack);
 	f(stack, n);
 }
 
