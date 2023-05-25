@@ -46,8 +46,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
 		tmp += 4;
-		while (*tmp == ' ')
-			tmp++;
 		if (tmp[0] != 0 && tmp[0] != '\n')
 			unknown_err(line, line_no, onboard, fd, stack);
 	}
