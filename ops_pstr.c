@@ -9,7 +9,6 @@
 void	pstr(stack_t **stack, unsigned int number)
 {
 	stack_t	*tmp;
-	char	c;
 
 	(void)number;
 	tmp = *stack;
