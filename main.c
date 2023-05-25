@@ -30,7 +30,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 		tmp += 4;
 		while (*tmp == ' ')
 			tmp++;
-		if (*tmp1 == '\n' || !*tmp1)
+		if (*tmp == '\n' || !*tmp)
 			push_err(line, line_no, onboard, fd, stack);
 	}
 	if (f == pint)
