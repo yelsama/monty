@@ -25,6 +25,8 @@ void	execute_line(char *line, int line_no, char *onboard,
 	free(op_code);
 	if (!f)
 		unknown_err(line, line_no, onboard, fd, stack);
+	if (f == push)
+		tmp += 4;
 	if (f == pint)
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
