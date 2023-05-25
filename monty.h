@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <stdint.h>
 #include <string.h>
+#include <ctype.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
