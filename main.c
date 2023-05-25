@@ -32,12 +32,8 @@ void	execute_line(char *line, int line_no, char *onboard,
 		while (*tmp == ' ')
 			tmp++;
 		n = atoi(tmp);
-		while (*tmp != ' ' || *tmp != '\n' || *tmp != 0)
-		{
-			if (!isdigit(*tmp))
-				push_err(line, line_no, onboard, fd, stack);
-			tmp++;
-		}
+		if (!isdigit(*tmp))
+			push_err(line, line_no, onboard, fd, stack);
 	}
 	if (f == pint)
 		if (!*stack)
