@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * div - prints list elements
+ * mdiv - prints list elements
  * @stack: holds the pointer to the first element
  * @number: number to be stored at the node
  * Return: the new stack for the node
  */
-void	div(stack_t **stack, unsigned int number)
+void	mdiv(stack_t **stack, unsigned int number)
 {
 	stack_t	*tmp;
 

@@ -15,7 +15,7 @@ void	the_rest(void	(*f)(stack_t**, unsigned int), char *line,
 		if (f == sub)
 			if (!*stack || !(*stack)->next)
 				sub_err(line, line_no, onboard, fd, stack);
-		if (f == div)
+		if (f == mdiv)
 			if (!*stack || !(*stack)->next)
 				div_err(line, line_no, onboard, fd, stack);
 }
