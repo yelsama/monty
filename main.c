@@ -30,36 +30,20 @@ void	execute_line(char *line, int line_no, char *onboard,
 		tmp += 5;
 		if (!*tmp || *tmp < '0' || *tmp > '9')
 			push_err(line, line_no, onboard, fd, stack);
-		else
-			f(stack, atoi(tmp));
 	}
-	else if (f == pall)
-	{
-		if ((!tmp[4] || tmp[4] == ' ' || tmp[4] == '\n'))
-			f(stack, 0);
-		else
+	if (f == pall)
+		if (tmp[4] != 0 && tmp[4] != ' ' && tmp[4] != '\n')
 			unknown_err(line, line_no, onboard, fd, stack);
-	}
 	else if (f == pint)
-	{
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
-		f(stack, 0);
-	}
-	else if (f == pop)
-	{
+	if (f == pop)
 		if (!*stack)
 			pop_err(line, line_no, onboard, fd, stack);
-		f(stack, 0);
-	}
-	else if (f == swap)
-	{
+	if (f == swap)
 		if (!*stack || !(*stack)->next)
 			swap_err(line, line_no, onboard, fd, stack);
-		f(stack, 0);
-	}
-	else
-		unknown_err(line, line_no, onboard, fd, stack);
+	f(stack, atoi(tmp));
 }
 
 /**
@@ -99,9 +83,16 @@ int	do_instructions_on_file(int fd)
  */
 int	main(int argc, char **argv)
 {
-	int	fd;
+	int		fd;
+	char	*extent;
 
 	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	extent = strrchr(argv[1], '.');
+	if (!extent || extent[1] != 'm' || extent[2] != '\0')
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
