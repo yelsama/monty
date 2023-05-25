@@ -67,7 +67,9 @@ void	add_err(char *line, int line_no, char *onboard,
 			int fd, stack_t **stack);
 void	sub_err(char *line, int line_no, char *onboard,
 			int fd, stack_t **stack);
-void	div_err(char *line, int line_no, char *onboard,
+void	div_err1(char *line, int line_no, char *onboard,
+			int fd, stack_t **stack);
+void	div_err2(char *line, int line_no, char *onboard,
 			int fd, stack_t **stack);
 
 void	pall(stack_t **stack, unsigned int number);
