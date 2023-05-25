@@ -34,6 +34,6 @@ void	sub_err(char *line, int line_no, char *onboard,
 		free(onboard);
 	close(fd);
 	dlt_stack(*stack);
-	fprintf(stderr, "L%d: can't add, stack too short\n", line_no);
+	fprintf(stderr, "L%d: can't sub, stack too short\n", line_no);
 	exit(EXIT_FAILURE);
 }
