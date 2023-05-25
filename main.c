@@ -13,6 +13,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 {
 	char	*tmp;
 	char	*op_code = NULL;
+	int		i = -1;
 	void	(*f)(stack_t**, unsigned int);
 
 	tmp = line;
@@ -30,10 +31,9 @@ void	execute_line(char *line, int line_no, char *onboard,
 		tmp += 4;
 		while (*tmp == ' ')
 			tmp++;
-		if (tmp[0] > '9' || tmp[0] < '0')
-			push_err(line, line_no, onboard, fd, stack);
-		if (tmp[1] != '\n' && tmp[1] != '\0')
-			push_err(line, line_no, onboard, fd, stack);
+		while (tmp[++i] != 0 && tmp[i] != '\n' && tmp[i] != ' ')
+			if (tmp[i] > '9' || tmp[i] < '0')
+				push_err(line, line_no, onboard, fd, stack);
 	}
 	if (f == pint)
 		if (!*stack)
