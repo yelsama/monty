@@ -25,6 +25,13 @@ void	the_rest(void	(*f)(stack_t**, unsigned int), char *line,
 		if (f == mul)
 			if (!*stack || !(*stack)->next)
 				mul_err(line, line_no, onboard, fd, stack);
+		if (f == mod)
+		{
+			if (!*stack || !(*stack)->next)
+				mod_err1(line, line_no, onboard, fd, stack);
+			if ((*stack)->n == 0)
+				mod_err2(line, line_no, onboard, fd, stack);
+		}
 }
 
 /**

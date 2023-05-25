@@ -47,7 +47,8 @@ void	(*get_op_code(char *s))(stack_t **, unsigned int)
 	instruction_t	codes[] = {{"push", push},
 	{"pall", pall}, {"pint", pint}, {"pop", pop},
 	{"swap", swap}, {"add", add}, {"nop", nop},
-	{"sub", sub}, {"div", mdiv}, {"mul", mul}
+	{"sub", sub}, {"div", mdiv}, {"mul", mul},
+	{"mod", mod}
 	};
 
 	while (codes[++i].opcode)
@@ -69,4 +70,3 @@ void	nop(stack_t **stack, unsigned int number)
 	(void)stack;
 	(void)number;
 }
-
