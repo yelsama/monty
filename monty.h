@@ -77,6 +77,10 @@ void	mod_err1(char *line, int line_no, char *onboard,
 			int fd, stack_t **stack);
 void	mod_err2(char *line, int line_no, char *onboard,
 			int fd, stack_t **stack);
+void	pchar_err1(char *line, int line_no, char *onboard,
+			int fd, stack_t **stack);
+void	pchar_err2(char *line, int line_no, char *onboard,
+			int fd, stack_t **stack);
 
 void	pall(stack_t **stack, unsigned int number);
 void	push(stack_t **stack, unsigned int number);
@@ -89,5 +93,6 @@ void	sub(stack_t **stack, unsigned int number);
 void	mdiv(stack_t **stack, unsigned int number);
 void	mul(stack_t **stack, unsigned int number);
 void	mod(stack_t **stack, unsigned int number);
+void	pchar(stack_t **stack, unsigned int number);
 void	(*get_op_code(char *s))(stack_t **, unsigned int);
 #endif

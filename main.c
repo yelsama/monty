@@ -32,6 +32,13 @@ void	the_rest(void	(*f)(stack_t**, unsigned int), char *line,
 			if ((*stack)->n == 0)
 				mod_err2(line, line_no, onboard, fd, stack);
 		}
+		if (f == pchar)
+		{
+			if (!*stack)
+				pchar_err2(line, line_no, onboard, fd, stack);
+			if ((*stack)->n < 0 || (*stack)->n > 127)
+				pchar_err1(line, line_no, onboard, fd, stack);
+		}
 }
 
 /**
