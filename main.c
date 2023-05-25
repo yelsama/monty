@@ -40,11 +40,17 @@ void	execute_line(char *line, int line_no, char *onboard,
 			tmp++;
 		if (tmp[0] != 0 && tmp[0] != '\n')
 			return;
-
 	}
 	if (f == pint)
+	{
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
+				tmp += 4;
+		while (*tmp == ' ')
+			tmp++;
+		if (tmp[0] != 0 && tmp[0] != '\n')
+			return;
+	}
 	if (f == pop)
 		if (!*stack)
 			pop_err(line, line_no, onboard, fd, stack);
