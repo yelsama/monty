@@ -15,7 +15,7 @@ void	pstr(stack_t **stack, unsigned int number)
 	tmp = *stack;
 	if (!tmp)
 	{
-		fprintf(STDOUT_FILENO, "\n");
+		fprintf(stdout, "\n");
 		return;
 	}
 	while (tmp)
@@ -25,5 +25,5 @@ void	pstr(stack_t **stack, unsigned int number)
 		fprintf(stdout, "%c\n", (char)tmp->n);
 		tmp = tmp->next;
 	}
-	fprintf(STDOUT_FILENO, "\n");
+	fprintf(stdout, "\n");
 }
