@@ -28,8 +28,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 	if (f == push)
 	{
 		tmp += 4;
-		if (*tmp != ' ')
-			push_err(line, line_no, onboard, fd, stack);
 		while (*tmp == ' ')
 			tmp++;
 		if (*tmp == '+')
