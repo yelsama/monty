@@ -9,12 +9,13 @@
 void	add(stack_t **stack, unsigned int number)
 {
 	stack_t	*tmp;
+	int		n;
 
 	(void)number;
 	tmp = *stack;
 	if (!tmp || !tmp->next)
 		return;
-	tmp->n = tmp->next->n + tmp->n;
+	tmp->next->n = tmp->next->n + tmp->n;
 	pop(stack, number);
 }
 
