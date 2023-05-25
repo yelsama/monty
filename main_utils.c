@@ -71,6 +71,5 @@ void	nop(stack_t **stack, unsigned int number)
 {
 	(void)stack;
 	(void)number;
-	return;
 }
 
