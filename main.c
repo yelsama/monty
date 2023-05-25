@@ -34,8 +34,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 			push_err(line, line_no, onboard, fd, stack);
 	}
 	if (f == pall)
-		if (tmp[4] != 0 && tmp[4] != ' ' && tmp[4] != '\n')
-			unknown_err(line, line_no, onboard, fd, stack);
+		return;
 	if (f == pint)
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
