@@ -27,7 +27,9 @@ void	execute_line(char *line, int line_no, char *onboard,
 		unknown_err(line, line_no, onboard, fd, stack);
 	if (f == push)
 	{
-		tmp += 5;
+		tmp += 4;
+		while (*tmp == ' ')
+			tmp++;
 		if (!*tmp || *tmp < '0' || *tmp > '9')
 			push_err(line, line_no, onboard, fd, stack);
 	}
