@@ -32,11 +32,10 @@ void	execute_line(char *line, int line_no, char *onboard,
 			tmp++;
 		if (*tmp == '\n' || !*tmp)
 			push_err(line, line_no, onboard, fd, stack);
-		while (*tmp &&  *tmp != '\n')
+		while (*tmp &&  *tmp != '\n' && *tmp != ' ')
 		{
 			if (*tmp > '9' || *tmp < '0' )
-				if (*tmp != ' ')
-					push_err(line, line_no, onboard, fd, stack);
+				push_err(line, line_no, onboard, fd, stack);
 			tmp++;
 		}
 	}
@@ -49,7 +48,7 @@ void	execute_line(char *line, int line_no, char *onboard,
 	if (f == swap)
 		if (!*stack || !(*stack)->next)
 			swap_err(line, line_no, onboard, fd, stack);
-	f(stack, atoi(tmp));
+	f(stack, atoi(line));
 }
 
 /**
