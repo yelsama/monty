@@ -44,6 +44,9 @@ void	execute_line(char *line, int line_no, char *onboard,
 	if (f == swap)
 		if (!*stack || !(*stack)->next)
 			swap_err(line, line_no, onboard, fd, stack);
+	if (f == add)
+		if (!*stack || !(*stack)->next)
+			add_err(line, line_no, onboard, fd, stack);
 	f(stack, n);
 }
 

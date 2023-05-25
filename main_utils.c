@@ -48,7 +48,8 @@ void	(*get_op_code(char *s))(stack_t **, unsigned int)
 	{"pall", pall},
 	{"pint", pint},
 	{"pop", pop},
-	{"swap", swap}
+	{"swap", swap},
+	{"add", add}
 	};
 
 	while (codes[++i].opcode)
