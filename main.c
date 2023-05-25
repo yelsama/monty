@@ -26,17 +26,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 	free(op_code);
 	if (!f)
 		unknown_err(line, line_no, onboard, fd, stack);
-	if (f == push)
-	{
-		tmp += 4;
-		while (*tmp == ' ')
-			tmp++;
-		if (tmp[0] == 0 || tmp[0] == '\n')
-			push_err(line, line_no, onboard, fd, stack);
-		while (tmp[++i] != 0 && tmp[i] != '\n' && tmp[i] != ' ')
-			if (tmp[i] > '9' || tmp[i] < '0')
-				push_err(line, line_no, onboard, fd, stack);
-	}
 	if (f == pint)
 		if (!*stack)
 			pint_err(line, line_no, onboard, fd, stack);
