@@ -13,7 +13,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 {
 	char	*tmp;
 	char	*op_code = NULL;
-	int		i = -1;
 	void	(*f)(stack_t**, unsigned int);
 
 	tmp = line;
