@@ -14,7 +14,7 @@ void	sub(stack_t **stack, unsigned int number)
 	tmp = *stack;
 	if (!tmp || !tmp->next)
 		return;
-	tmp->next->n = tmp->n - tmp->next->n;
+	tmp->next->n = tmp->next->n - tmp->n;
 	pop(stack, number);
 }
 
