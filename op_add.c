@@ -9,7 +9,6 @@
 void	add(stack_t **stack, unsigned int number)
 {
 	stack_t	*tmp;
-	int		n;
 
 	(void)number;
 	tmp = *stack;
