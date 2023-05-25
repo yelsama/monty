@@ -12,7 +12,6 @@ void	execute_line(char *line, int line_no, char *onboard,
 	int fd, stack_t **stack)
 {
 	char	*tmp;
-	char	*tmp1;
 	char	*op_code = NULL;
 	void	(*f)(stack_t**, unsigned int);
 
@@ -31,15 +30,8 @@ void	execute_line(char *line, int line_no, char *onboard,
 		tmp += 4;
 		while (*tmp == ' ')
 			tmp++;
-		tmp1 = tmp;
 		if (*tmp1 == '\n' || !*tmp1)
 			push_err(line, line_no, onboard, fd, stack);
-		while (*tmp1 &&  *tmp1 != '\n' && *tmp1 != ' ')
-		{
-			if (*tmp1 > '9' || *tmp1 < '0' )
-				push_err(line, line_no, onboard, fd, stack);
-			tmp1++;
-		}
 	}
 	if (f == pint)
 		if (!*stack)
