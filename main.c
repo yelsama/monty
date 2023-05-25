@@ -32,6 +32,12 @@ void	execute_line(char *line, int line_no, char *onboard,
 			tmp++;
 		if (*tmp == '\n' || !*tmp)
 			push_err(line, line_no, onboard, fd, stack);
+		while (*tmp &&  *tmp != '\n')
+		{
+			if (*tmp > '9' || *tmp < '0')
+				push_err(line, line_no, onboard, fd, stack);
+			tmp++;
+		}
 	}
 	if (f == pint)
 		if (!*stack)
